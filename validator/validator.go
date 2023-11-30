@@ -3,9 +3,6 @@ package validator
 import (
 	"fmt"
 	"regexp"
-
-	"github.com/go-playground/validator/v10"
-	"github.com/onee-platform/onee-go/cached"
 )
 
 const (
@@ -28,11 +25,4 @@ func IsStatusSpace(field validator.FieldLevel) bool {
 	number := field.Field().Int()
 
 	return isStatusSpaceRegex.MatchString(fmt.Sprintf("%d", number))
-}
-
-func OptionValidator(field validator.FieldLevel) bool {
-	value := field.Field()
-	param := field.Param()
-
-	return cached.CheckByValue(param, fmt.Sprintf("%s", value))
 }
